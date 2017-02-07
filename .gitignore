@@ -15,8 +15,8 @@
 
 target
 
-*.[oa]
-
+*.o
+*.a
 *.class
 
 *.gz
