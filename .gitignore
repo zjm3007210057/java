@@ -1,8 +1,10 @@
-﻿#忽略.git和.idea文件夹
+﻿#忽略.git和.idea以及.settings文件夹
 
 .git
 
 .idea
+
+.settings
 
 #忽略.classpath,.project,.iml文件
 
@@ -15,8 +17,8 @@
 
 target
 
-*.o
-*.a
+*.[oa]
+
 *.class
 
 *.gz
