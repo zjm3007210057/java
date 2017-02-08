@@ -1,0 +1,4 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Wed Aug 31 16:13:09 CST 2016
+rabbitmq-server-0.0.1-SNAPSHOT.pom>=
+rabbitmq-server-0.0.1-SNAPSHOT.jar>=
