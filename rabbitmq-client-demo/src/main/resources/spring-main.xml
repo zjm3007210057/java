@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.common" />
+    <context:component-scan base-package="com.message"/>
+    <context:component-scan base-package="rabbitmq.rabbitmq_client"/>
+
+    <!--<bean id="connectionConfig" class="com.message.base.ConnectionConfig"/>-->
+    <bean id="config" class="com.common.base.ServiceConfig" >
+        <property name="host" value="127.0.0.1"/>
+        <property name="port" value="5672"/>
+    </bean>
+    <!--<bean id="rmQueue" class="com.message.base.RMQueue">
+        <property name="exchangeName" value="test"/>
+        <property name="routingKey" value="test"/>
+    </bean>-->
+
+    <bean id="serviceCallBack" class="rabbitmq.rabbitmq_client.ASystemServiceCallBack"/>
+    <bean id="messageHandler" class="com.message.handler.MessageHandler" init-method="init" >
+        <constructor-arg name="exchangeName" value="test"/>
+        <constructor-arg name="routingKey" value="test"/>
+        <constructor-arg name="serviceCallBack" ref="serviceCallBack"/>
+    </bean>
+    <bean id="serviceCallBack1" class="rabbitmq.rabbitmq_client.ASystemServiceCallBack1"/>
+    <bean id="messageHandler1" class="com.message.handler.MessageHandler" init-method="init" >
+        <constructor-arg name="exchangeName" value="test"/>
+        <constructor-arg name="routingKey" value="test1"/>
+        <constructor-arg name="serviceCallBack" ref="serviceCallBack1"/>
+    </bean>
+</beans>
