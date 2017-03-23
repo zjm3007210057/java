@@ -3,8 +3,6 @@ package com.post;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by zhjm on 2017/1/7.
@@ -88,6 +86,7 @@ public class PostTest {
             HttpURLConnection connection = (HttpURLConnection)realUrl.openConnection();
             // 设置通用的请求属性
             connection.setRequestMethod("GET");
+            connection.setRequestProperty("buCode", "1001");
             connection.setRequestProperty("accept", "*/*");
             connection.setRequestProperty("connection", "Keep-Alive");
             connection.setRequestProperty("Content-Type", "application/json");
@@ -187,6 +186,8 @@ public class PostTest {
     }
 
     public static void main(String[] args) {
+
+        sendGet("http://10.205.33.175/passport/oauth/url", "oauthType=2");
         /*new Thread(new Runnable() {
             public void run() {
                 String str;
@@ -198,7 +199,7 @@ public class PostTest {
             }
         }).start();*/
 
-        new Thread(new Runnable() {
+        /*new Thread(new Runnable() {
             public void run() {
                 for(int i=0; i<300; i++){
                     System.out.println("这是post的1线程：" + i);
@@ -219,7 +220,7 @@ public class PostTest {
                     sendGet("http://127.0.0.1:8080/redis/keys", "");
                 }
             }
-        }).start();
+        }).start();*/
 
         /*new Thread(new Runnable() {
             public void run() {
