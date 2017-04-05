@@ -30,4 +30,5 @@ public class StringUtil {
     public static boolean notEquals(String s1, String s2){
         return !equals(s1, s2);
     }
+
 }

@@ -26,8 +26,8 @@ public class EncryptUtil {
             encryptType = DEFAULT_ENCRYPT_TYPE;
         }
         String res = null;
-        MessageDigest md = null;
-        byte[] bytes = null;
+        MessageDigest md;
+        byte[] bytes;
         try {
             md = MessageDigest.getInstance(encryptType);
             md.update(sourceString.getBytes(/*"UTF-8"*/));
@@ -43,7 +43,7 @@ public class EncryptUtil {
 
     public static String bytes2Hex(byte[] bts) {
         String des = "";
-        String tmp = null;
+        String tmp;
         for (int i = 0; i < bts.length; i++) {
             tmp = (Integer.toHexString(bts[i] & 0xFF));
             if (tmp.length() == 1) {
@@ -67,18 +67,4 @@ public class EncryptUtil {
         return strBuffer.toString();
     }
 
-    public static void main(String[] args) {
-        String sha = "201703091100001001MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApwbuhLHGlRmJwFwnH07ubOMZ3BFuEnAiq+lRYGMZ5KznAO9p+ReEYU+smh/2FH94RRIDD0qi7Y29DfW0eUbhGiW7YV1dPtQ6obEeqBno2ZKNSKiwNfyq+1PQuZBtmv0PuJlPTdlWEBSVkC3F3Twhaqgvxpv9Sy8FotZr4Sd4KYTNaW+YKOF0R5phsOEU2lhnc1gSr2jBdXg91eYp70/nEhS3lFEPZNO7d3XObLfMVirJnrTUQKE3RBUB4OqYVJscTMazGy8wRz59ag9qPCHMhsF4iy+RmnfuLL7Ib94W1eQciQYMLLZHclnlGoiF8qDH0V8I8C/JZag9SkeyIav45wIDAQAB";
-        //a92492420ea43ab6e4a0b918362a8ba5d4862c2508b17a9caf50d719a8ee6e41
-        List ss = Arrays.asList(new String[]{"a", "d"});
-        String sendRecord = "1489067148009|1489067225047|1489071173669|";
-        List lostTimes = Arrays.asList(sendRecord.split("\\|"));
-            lostTimes.forEach( timeStr -> {
-                long lostTime = Long.parseLong(timeStr.toString());
-                System.out.println(lostTime);
-            });
-        //36b64f0c05b2626abb4d2c2a1408cda650dd2761827c614fc6c81debbc9be1d2
-        System.out.println(ss.contains(""));
-        System.out.println(encrypt(sha, ""));
-    }
 }
