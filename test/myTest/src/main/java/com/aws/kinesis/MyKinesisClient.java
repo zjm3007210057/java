@@ -18,7 +18,7 @@ public class MyKinesisClient {
     private PutRecordRequest putRecordRequest;
 
     public MyKinesisClient(){
-        client = new AmazonKinesisClient(new AWSCredentials() {
+        /*client = new AmazonKinesisClient(new AWSCredentials() {
             public String getAWSAccessKeyId() {
                 return "AKIAPFY2KPDNKK52Y3SA";
             }
@@ -26,6 +26,6 @@ public class MyKinesisClient {
             public String getAWSSecretKey() {
                 return "s+q2tF2v53u+cubUGoq1tXMOCZ3JNupEOlk56erk";
             }
-        });
+        });*/
     }
 }

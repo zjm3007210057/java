@@ -1,7 +1,6 @@
 package com.performance.thread;
 
-import org.apache.commons.lang.StringUtils;
-import sun.awt.image.SunWritableRaster;
+import com.me.string.StringUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,7 +23,7 @@ public class SimpleDateThread implements Runnable {
         try{
             Date dateStr = sdf.parse(dataString);
             String newDateStr = sdf.format(dateStr).toString();
-            if(!StringUtils.equals(newDateStr, dataString)){
+            if(!StringUtil.equals(newDateStr, dataString)){
                 System.out.println("ThreadName=" + Thread.currentThread().getName() +
                         "报错了，日期字符串：" + dataString + "转换成的日期为：" + newDateStr);
             }
