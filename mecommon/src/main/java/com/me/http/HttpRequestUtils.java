@@ -37,20 +37,22 @@ public class HttpRequestUtils {
      * sendHttpPost
      * @param url
      * @param jsonObject
+     * @param headers
      * @return
      */
-    public static JSONObject sendHttpPost(String url, JSONObject jsonObject, Header header){
-        return sendHttpPost(url, jsonObject, header, false);
+    public static JSONObject sendHttpPost(String url, JSONObject jsonObject, Header[] headers){
+        return sendHttpPost(url, jsonObject, headers, false);
     }
 
     /**
      * 发送post请求
      * @param url
      * @param jsonObject
+     * @param headers
      * @param noNeedResponse
      * @return
      */
-    public static JSONObject sendHttpPost(String url, JSONObject jsonObject, Header header, boolean noNeedResponse){
+    public static JSONObject sendHttpPost(String url, JSONObject jsonObject, Header[] headers, boolean noNeedResponse){
         HttpClient client = HttpClients.createDefault();
         HttpPost post = new HttpPost(url);
         JSONObject jsonResult = null;
@@ -62,8 +64,8 @@ public class HttpRequestUtils {
                 post.setEntity(entity);
            }
            HttpResponse response = client.execute(post);
-           if(ObjectUtil.isNotNull(header)){
-               post.setHeader(header);
+           if(CollectionUtil.isNotEmpty(headers)){
+               post.setHeaders(headers);
            }
            /**请求发送成功，并得到响应**/
            if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
@@ -95,11 +97,11 @@ public class HttpRequestUtils {
     /**
      * 发送get请求
      * @param url
-     * @param header
+     * @param headers
      * @param paramsMap
      * @return
      */
-    public static JSONObject sendHttpGet(String url, Header header, Map<String, Object> paramsMap){
+    public static JSONObject sendHttpGet(String url, Header[] headers, Map<String, Object> paramsMap){
         JSONObject result = null;
         try{
             HttpClient client = HttpClients.createDefault();
@@ -116,8 +118,8 @@ public class HttpRequestUtils {
                 url = url.substring(0, url.length() - 1);
             }
             request.setURI(URI.create(url));
-            if(ObjectUtil.isNotNull(header)){
-                request.setHeader(header);
+            if(CollectionUtil.isNotEmpty(headers)){
+                request.setHeaders(headers);
             }
             HttpResponse response = client.execute(request);
             /**请求发送成功，并得到响应**/
