@@ -63,11 +63,12 @@ public class HttpRequestUtils {
                 entity.setContentType("application/json");
                 post.setEntity(entity);
            }
-           HttpResponse response = client.execute(post);
            if(CollectionUtil.isNotEmpty(headers)){
                post.setHeaders(headers);
            }
-           /**请求发送成功，并得到响应**/
+
+           HttpResponse response = client.execute(post);
+            /**请求发送成功，并得到响应**/
            if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
                String str;
                str = EntityUtils.toString(response.getEntity());
