@@ -55,7 +55,7 @@ public class HttpRequestUtils {
     public static JSONObject sendHttpPost(String url, JSONObject jsonObject, Header[] headers, boolean noNeedResponse){
         HttpClient client = HttpClients.createDefault();
         HttpPost post = new HttpPost(url);
-        JSONObject jsonResult = null;
+        JSONObject jsonResult = new JSONObject();
         try{
            if(ObjectUtil.isNotNull(jsonObject)){
                 StringEntity entity = new StringEntity(jsonObject.toJSONString(), "utf-8");
@@ -102,7 +102,7 @@ public class HttpRequestUtils {
      * @return
      */
     public static JSONObject sendHttpGet(String url, Header[] headers, Map<String, Object> paramsMap){
-        JSONObject result = null;
+        JSONObject result = new JSONObject();
         try{
             HttpClient client = HttpClients.createDefault();
             HttpGet request = new HttpGet();
