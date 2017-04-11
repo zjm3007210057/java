@@ -187,7 +187,7 @@ public class PostTest {
 
     public static void main(String[] args) {
 
-        sendGet("http://10.205.33.175/passport/oauth/url", "oauthType=2");
+        sendGet("http://10.205.33.160/passport/oauth/url", "oauthType=2");
         /*new Thread(new Runnable() {
             public void run() {
                 String str;
