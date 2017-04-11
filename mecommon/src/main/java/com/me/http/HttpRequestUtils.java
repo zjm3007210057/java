@@ -1,6 +1,7 @@
 package com.me.http;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.me.collection.CollectionUtil;
 import com.me.object.ObjectUtil;
 import org.apache.http.Header;

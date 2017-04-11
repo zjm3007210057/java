@@ -16,23 +16,56 @@ public class EncryptUtil {
     private final static String DEFAULT_ENCRYPT_TYPE = "SHA-256";
 
     /**
+     * 256加密
+     *
+     * @param sourceString
+     * @return
+     */
+    public static String SHA256ToHexString(final String sourceString) {
+        return encryptToHexString(sourceString, DEFAULT_ENCRYPT_TYPE);
+    }
+
+    /**
+     * 256加密
+     *
+     * @param sourceString
+     * @return
+     */
+    public static String SHA256Bytes2Hex(final String sourceString) {
+        return encryptBytes2Hex(sourceString, DEFAULT_ENCRYPT_TYPE);
+    }
+
+    /**
      * 加密
+     *
      * @param sourceString 原字符串
-     * @param encryptType 加密算法类型
+     * @param encryptType  加密算法类型
      * @return 加密后的字符串
      */
-    public static String encrypt(String sourceString, String encryptType) {
-        if (StringUtil.isBlank(encryptType)) {
-            encryptType = DEFAULT_ENCRYPT_TYPE;
-        }
+    public static String encryptToHexString(final String sourceString, final String encryptType) {
         String res = null;
         MessageDigest md;
         byte[] bytes;
         try {
             md = MessageDigest.getInstance(encryptType);
-            md.update(sourceString.getBytes(/*"UTF-8"*/));
+            md.update(sourceString.getBytes());
             bytes = md.digest();
             res = toHexString(bytes);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public static String encryptBytes2Hex(final String sourceString, final String encryptType) {
+        String res = null;
+        MessageDigest md;
+        byte[] bytes;
+        try {
+            md = MessageDigest.getInstance(encryptType);
+            md.update(sourceString.getBytes());
+            bytes = md.digest();
+            res = bytes2Hex(bytes);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } /*catch (UnsupportedEncodingException e) {
@@ -56,6 +89,7 @@ public class EncryptUtil {
 
     /**
      * bytes转成字符串
+     *
      * @param data
      * @return
      */
@@ -66,5 +100,6 @@ public class EncryptUtil {
         }
         return strBuffer.toString();
     }
+
 
 }
