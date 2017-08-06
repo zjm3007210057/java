@@ -8,6 +8,11 @@
     <artifactId>com.myTest</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
     <dependencies>
         <dependency>
             <groupId>io.netty</groupId>
@@ -44,6 +49,21 @@
             <artifactId>me-common</artifactId>
             <version>20170304.1.0.0</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.29</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>22.0</version>
+        </dependency>
+
 
     </dependencies>
 

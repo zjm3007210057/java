@@ -6,7 +6,8 @@ import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.kinesis.producer.KinesisProducer;
 import com.amazonaws.services.kinesis.producer.KinesisProducerConfiguration;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -14,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MyKPLKinesis {
 
-    Logger logger = Logger.getLogger(MyKPLKinesis.class);
+    Logger logger = LoggerFactory.getLogger(MyKPLKinesis.class);
 
     @Autowired
     private KinesisProducer producer;

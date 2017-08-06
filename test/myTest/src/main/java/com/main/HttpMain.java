@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.regex.Pattern;
 
 /**
  * Created by zjm on 2017/4/5.
@@ -32,15 +33,15 @@ public class HttpMain {
             "Gy8wRz59ag9qPCHMhsF4iy+RmnfuLL7Ib94W1eQciQYMLLZHclnlGoiF8qDH0V8I8C/JZag9Skey" +
             "Iav45wIDAQAB";
     private final static String phoneNo = "18521701268";
-    private final static String postUrl = "http://localhost:9013/passport/codes/phone-existence";
-    private final static String getUrl = "http://localhost:9013/passport/oauth/url";
-
+    private final static String postUrl = "http://127.0.0.1:9013/passport/codes/phone-existence";
+    private final static String getUrl = "http://10.205.35.75:9013/passport/oauth/url";
+    private final static String getUrl1 = "http://localhost:9013/sms/reports";
     /**
      * 获取时间戳
      * @return
      */
     public static String getTimeStr(){
-        return DateUtils.convertToStr(System.currentTimeMillis() - 60000, DateUtils.DATE_TYPE_YYYYMMDDHHMMSS);
+        return DateUtils.convertToStr(System.currentTimeMillis(), DateUtils.DATE_TYPE_YYYYMMDDHHMMSS);
     }
 
     /**
@@ -188,15 +189,37 @@ public class HttpMain {
 
     public static void main(String[] args) {
 
-        for (int i = 0; i < 50; i++) {
+        Map map = new HashMap(2);
+        map.put("oauthType", 1);
+        for (int i = 0; i < 1; i++) {
             System.out.println("时间戳为：" + getTimeStr() + " ||  验签为：" + getSign());
-//            System.out.println(sendGet(getUrl, "oauthType=1"));
-            System.out.println(sendHttpGet());
+//            System.out.println(sendGet(getUrl, map));
+//            System.out.println(sendHttpGet());
+            System.out.println(sendHttpPost());
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+
+        //"http://127.0.0.1:9013/passport/codes/phone-existence"
+        String sss = "wddsds7676876asd87687asdasdq3424sdsd";
+        Pattern pattern = Pattern.compile(".*");
+        Pattern pattern1 = Pattern.compile("\\w{1,100}");
+        Long start = System.currentTimeMillis();
+        for (int i = 0; i < 10000000; i++) {
+            if(pattern.matcher(sss).matches()){
+//                System.out.println("enenene");
+            }
+        }
+        System.out.println(System.currentTimeMillis() - start);
+        start = System.currentTimeMillis();
+        for (int i = 0; i < 10000000; i++) {
+            if(pattern1.matcher(sss).matches()){
+//                System.out.println("hahahah");
+            }
+        }
+        System.out.println(System.currentTimeMillis() - start);
     }
 }

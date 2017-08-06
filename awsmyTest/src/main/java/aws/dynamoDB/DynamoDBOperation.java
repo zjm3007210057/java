@@ -101,7 +101,7 @@ public class DynamoDBOperation {
             System.out.println(iterator.next().toJSONPretty());
         }*/
 
-        items.forEach(item -> System.out.println(item));
+        items.forEach(item -> System.out.println(item.toJSONPretty()));
 
         System.out.println("---------id = 100 的结果-----------");
         System.out.println("---------------------------------------------------");
@@ -110,7 +110,7 @@ public class DynamoDBOperation {
         System.out.println("====================================================");
         System.out.println("====================================================");
 
-        items1.forEach(item -> System.out.println(item));
+        items1.forEach(item -> System.out.println(item.toJSONPretty()));
 
       /*  Iterator<Item> iterator1 = items1.iterator();
         while(iterator1.hasNext()){

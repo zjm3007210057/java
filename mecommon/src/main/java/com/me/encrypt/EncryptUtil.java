@@ -1,19 +1,18 @@
 package com.me.encrypt;
 
-import com.me.string.StringUtil;
-
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by zjm on 2017/3/4.
  */
 public class EncryptUtil {
 
-    private final static String DEFAULT_ENCRYPT_TYPE = "SHA-256";
+    public final static String ALGORITHM_SHA_256 = "SHA-256";
+    public final static String ALGORITHM_SHA_512 = "SHA-512";
+    public final static String ALGORITHM_MD5 = "MD5";
+    public final static String ALGORITHM_DES = "DESede/ECB/PKCS5Padding";
+
 
     /**
      * 256加密
@@ -22,7 +21,7 @@ public class EncryptUtil {
      * @return
      */
     public static String SHA256ToHexString(final String sourceString) {
-        return encryptToHexString(sourceString, DEFAULT_ENCRYPT_TYPE);
+        return encryptToHexString(sourceString, ALGORITHM_SHA_256);
     }
 
     /**
@@ -32,7 +31,7 @@ public class EncryptUtil {
      * @return
      */
     public static String SHA256Bytes2Hex(final String sourceString) {
-        return encryptBytes2Hex(sourceString, DEFAULT_ENCRYPT_TYPE);
+        return encryptBytes2Hex(sourceString, ALGORITHM_SHA_256);
     }
 
     /**
@@ -57,6 +56,12 @@ public class EncryptUtil {
         return res;
     }
 
+    /**
+     * 加密
+     * @param sourceString 原字符串
+     * @param encryptType 加密类型
+     * @return 加密串
+     */
     public static String encryptBytes2Hex(final String sourceString, final String encryptType) {
         String res = null;
         MessageDigest md;
@@ -68,12 +73,15 @@ public class EncryptUtil {
             res = bytes2Hex(bytes);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-        } /*catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }*/
+        }
         return res;
     }
 
+    /**
+     * byte数组转字符串
+     * @param bts
+     * @return
+     */
     public static String bytes2Hex(byte[] bts) {
         String des = "";
         String tmp;

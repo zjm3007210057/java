@@ -31,4 +31,11 @@ public class StringUtil {
         return !equals(s1, s2);
     }
 
+    public static String trim(String str){
+        if(isBlank(str)){
+            return "";
+        }
+        return str.trim();
+    }
+
 }

@@ -7,12 +7,29 @@
     <groupId>com.aws.myTest</groupId>
     <artifactId>aws-myTest</artifactId>
     <version>20170224.1.0.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk</artifactId>
-            <version>1.11.93</version>
+            <version>1.11.153</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -29,16 +46,25 @@
             <artifactId>amazon-sqs-java-messaging-lib</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.22</version>
-        </dependency>
+        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/log4j/log4j -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>amazon-kinesis-producer</artifactId>
@@ -54,7 +80,34 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.13</version>
         </dependency>
-    </dependencies>
 
+        <!-- aws kinesis KPL-->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>amazon-kinesis-producer</artifactId>
+            <version>0.12.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- aws kinesis KCL-->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>amazon-kinesis-client</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/net.spy/spymemcached -->
+        <dependency>
+            <groupId>net.spy</groupId>
+            <artifactId>spymemcached</artifactId>
+            <version>2.12.3</version>
+        </dependency>
+
+
+    </dependencies>
 
 </project>
